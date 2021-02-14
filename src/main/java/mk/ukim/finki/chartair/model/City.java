@@ -15,10 +15,10 @@ public class City {
     @ManyToOne
     private Country country;
 
-    @OneToMany(mappedBy = "departureCity", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "departureCity")
     private List<Flight> departingFlights;
 
-    @OneToMany(mappedBy = "arrivalCity", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "arrivalCity")
     private List<Flight> arrivingFlights;
 
     public City() {

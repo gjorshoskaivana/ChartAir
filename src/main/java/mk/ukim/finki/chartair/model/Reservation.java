@@ -10,7 +10,7 @@ public class Reservation {
     @GeneratedValue
     private Long reservationId;
 
-    @OneToMany(mappedBy = "reservation", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "reservation")
     private List<Passenger> passengers;
 
     @OneToOne

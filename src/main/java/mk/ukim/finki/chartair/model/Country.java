@@ -10,7 +10,7 @@ public class Country {
     @GeneratedValue
     private Long countryId;
 
-    @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "country")
     private List<City> cities;
 
     public Country() {
