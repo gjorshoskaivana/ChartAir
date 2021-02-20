@@ -10,13 +10,16 @@ public class Country {
     @GeneratedValue
     private Long countryId;
 
+    private String countryName;
+
     @OneToMany(mappedBy = "country")
     private List<City> cities;
 
     public Country() {
     }
 
-    public Country(List<City> cities) {
+    public Country(String countryName, List<City> cities) {
+        this.countryName = countryName;
         this.cities = cities;
     }
 }
