@@ -12,8 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
-
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     private final PasswordEncoder passwordEncoder;
     private final CustomUsernamePasswordAuthenticationProvider authenticationProvider;
 
@@ -21,7 +21,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     {
         this.passwordEncoder = passwordEncoder;
-        //this.authenticationProvider = authenticationProvider;
         this.authenticationProvider = authenticationProvider;
     }
     @Override
@@ -30,20 +29,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/h2/**");
 
     }
-/*
+
     @Override
      protected void configure(HttpSecurity http) throws Exception {
          http.csrf().disable()
                  .authorizeRequests()
-                 .antMatchers("/", "/login").permitAll()
+                 .antMatchers("/", "/home", "/login", "/register").permitAll()
                  .antMatchers("/admin/**").hasRole("ADMIN")
                  .anyRequest()
                  .authenticated()
                  .and()
                  .formLogin()
-                 .loginPage("/login").permitAll()
+                 //.loginPage("/login").permitAll()
                  .failureUrl("/login?error=BadCredentials")
-                 .defaultSuccessUrl("/products", true)
+                 .defaultSuccessUrl("/", true)
                  .and()
                  .logout()
                  .logoutUrl("/logout")
@@ -55,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                  .exceptionHandling().accessDeniedPage("/access_denied");
 
      }
-*/
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
@@ -66,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("admin")
                 .password(passwordEncoder.encode("admin"))
                 .authorities("ROLE_ADMIN");
-        auth.authenticationProvider(authenticationProvider);
+
     }
 
 

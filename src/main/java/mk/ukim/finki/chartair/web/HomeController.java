@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = {"/", "/home"})
 public class HomeController {
+
     @GetMapping
     public String getHomePage(Model model) {
         model.addAttribute("bodyContent", "home");
