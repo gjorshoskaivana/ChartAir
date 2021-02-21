@@ -18,7 +18,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomUsernamePasswordAuthenticationProvider authenticationProvider;
 
     public SecurityConfig(PasswordEncoder passwordEncoder, CustomUsernamePasswordAuthenticationProvider authenticationProvider)
-
     {
         this.passwordEncoder = passwordEncoder;
         this.authenticationProvider = authenticationProvider;
@@ -34,13 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      protected void configure(HttpSecurity http) throws Exception {
          http.csrf().disable()
                  .authorizeRequests()
-                 .antMatchers("/", "/home", "/login", "/register").permitAll()
+                 .antMatchers("/", "/home", "/register").permitAll()
                  .antMatchers("/admin/**").hasRole("ADMIN")
                  .anyRequest()
                  .authenticated()
                  .and()
                  .formLogin()
-                 //.loginPage("/login").permitAll()
+                 .loginPage("/login").permitAll()
                  .failureUrl("/login?error=BadCredentials")
                  .defaultSuccessUrl("/", true)
                  .and()
@@ -57,14 +56,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+        /*auth.inMemoryAuthentication()
                 .withUser("user")
                 .password(passwordEncoder.encode("user"))
                 .authorities("ROLE_USER")
                 .and()
                 .withUser("admin")
                 .password(passwordEncoder.encode("admin"))
-                .authorities("ROLE_ADMIN");
+                .authorities("ROLE_ADMIN");*/
+        auth.authenticationProvider(authenticationProvider);
 
     }
 

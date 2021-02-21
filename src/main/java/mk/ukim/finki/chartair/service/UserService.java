@@ -1,7 +1,8 @@
 package mk.ukim.finki.chartair.service;
 
-import org.apache.catalina.Role;
-import org.apache.catalina.User;
+
+import mk.ukim.finki.chartair.model.Role;
+import mk.ukim.finki.chartair.model.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {
