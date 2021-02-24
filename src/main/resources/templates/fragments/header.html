@@ -1,7 +1,7 @@
-<header xmlns:th="http://www.thymeleaf.org">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<header xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/">WEB PROGRAMMING SHOP</a>
+            <a class="navbar-brand text-warning" href="/"><i><img width="100" height="50" src="https://png2.cleanpng.com/sh/d9c0743f00d6cb587ff75868081ea451/L0KzQYm4UcIyN5d7jJH0aYP2gLBuTfxwb5CyeuRqbnSwf8Pugf5qgpJ5gdH3LYD1f7X8gCQubpDzjJ8AYna3dofrVMI3OZU9S5CBMkG0RoG4VsE2PGM8UKIBMki0RYe4TwBvbz==/kisspng-logo-brand-organization-product-font-5bf4f6d4261d83.6211601615427806281561.png"></i></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -10,29 +10,21 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item m-auto">
-                        <a class="nav-link active" href="/products">Products</a>
+                        <a class="nav-link active" href="/products">Plan</a>
                     </li>
                     <li class="nav-item m-auto" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a class="nav-link active" href="/servlet/thymeleaf/category">Categories</a>
+                        <a class="nav-link active" href="/servlet/thymeleaf/category">Flight Status</a>
                     </li>
-                    <li class="nav-item m-auto" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a class="nav-link active" href="/manufacturers">Manufacturers</a>
+                    <li class="nav-item m-auto" >
+                        <a class="nav-link active" href="/manufacturers">ChartAir Services</a>
+                    </li>
+                    <li class="nav-item m-auto" >
+                        <a class="nav-link active" href="/manufacturers">Prices and Discounts</a>
                     </li>
                 </ul>
 
 
-                <form class="form-inline my-2 my-lg-0">
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" aria-label="Small"
-                               aria-describedby="inputGroup-sizing-sm"
-                               placeholder="Search...">
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-secondary btn-number">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+
                 <ul class="nav navbar-nav navbar-right">
 
                     <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -43,7 +35,7 @@
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <a class="btn btn-success btn-sm ml-3" href="/shopping-cart">
-                            <i class="fa fa-shopping-cart"></i> Cart
+                            <i class="fa fa-shopping-cart"></i>My Cart
                         </a>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -61,3 +53,4 @@
         </div>
     </nav>
 </header>
+
