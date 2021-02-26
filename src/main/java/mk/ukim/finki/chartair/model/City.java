@@ -24,9 +24,10 @@ public class City {
     public City() {
     }
 
-    public City(String cityName, Country country, List<Flight> departingFlights) {
+    public City(String cityName, Country country, List<Flight> departingFlights, List<Flight> arrivingFlights) {
         this.cityName = cityName;
         this.country = country;
         this.departingFlights = departingFlights;
+        this.arrivingFlights = arrivingFlights;
     }
 }

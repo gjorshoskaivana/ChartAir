@@ -29,4 +29,20 @@ public class Flight {
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
     }
+
+    public LocalDateTime getDeparture() {
+        return departure;
+    }
+
+    public LocalDateTime getExpectedLanding() {
+        return expectedLanding;
+    }
+
+    public City getDepartureCity() {
+        return departureCity;
+    }
+
+    public City getArrivalCity() {
+        return arrivalCity;
+    }
 }
