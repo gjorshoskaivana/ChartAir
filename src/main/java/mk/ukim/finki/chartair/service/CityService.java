@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface CityService {
     List<City> findAll();
-    List<City> findAllByDepartureCity(City city);
+    List<City> findAllByDepartureCity(Long cityId);
+    List<City> findCitiesByNameLike(String name);
     City create(String cityName, Country country, List<Flight> departingFlights, List<Flight> arrivingFlights);
+    City findCityById(Long id);
+
 }

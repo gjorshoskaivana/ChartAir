@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Long> {
     List<Flight> findAllByDepartureCity(City departureCity);
+    List<Flight> findAllByDepartureCityAndArrivalCity(City departure, City arrival);
 }

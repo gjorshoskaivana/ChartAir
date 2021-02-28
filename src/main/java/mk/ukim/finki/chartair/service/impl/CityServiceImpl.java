@@ -9,6 +9,7 @@ import mk.ukim.finki.chartair.service.CityService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,14 +29,27 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public List<City> findAllByDepartureCity(City city) {
-        return flightRepository.findAllByDepartureCity(city)
+    public List<City> findAllByDepartureCity(Long cityId) {
+        return flightRepository.findAllByDepartureCity(this.findCityById(cityId))
                 .stream().map(Flight::getArrivalCity).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<City> findCitiesByNameLike(String name) {
+        return this.cityRepository.findAllByCityNameLike(name);
     }
 
     @Override
     public City create(String cityName, Country country, List<Flight> departingFlights, List<Flight> arrivingFlights) {
         return cityRepository.save(new City(cityName, country, departingFlights, arrivingFlights));
     }
+
+    @Override
+    public City findCityById(Long id) {
+        City city = this.cityRepository.findById(id).orElse(null);
+        return city;
+    }
+
+
 
 }
