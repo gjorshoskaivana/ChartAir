@@ -1,8 +1,11 @@
 package mk.ukim.finki.chartair.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Data
 @Entity
 public class Flight {
 
@@ -28,21 +31,5 @@ public class Flight {
         this.expectedLanding = expectedLanding;
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
-    }
-
-    public LocalDateTime getDeparture() {
-        return departure;
-    }
-
-    public LocalDateTime getExpectedLanding() {
-        return expectedLanding;
-    }
-
-    public City getDepartureCity() {
-        return departureCity;
-    }
-
-    public City getArrivalCity() {
-        return arrivalCity;
     }
 }

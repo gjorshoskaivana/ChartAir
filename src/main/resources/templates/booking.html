@@ -3,28 +3,43 @@
 
     </div>
 </div>
-<section class="search-sec carousel-caption" style="top: 100px">
+<section class="search-sec carousel-caption" style="top: 100px" xmlns:th="http://www.thymeleaf.org">
     <div class="container ">
         <form action="#" method="post" novalidate="novalidate">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                <!--<div class="col-lg-3 col-md-3 col-sm-12 p-0">
                     <label class="form-control" style="background: dodgerblue"><b>Departure Date</b></label>
                     <input type="date" class="form-control search-slt" placeholder="Departure">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                     <label class="form-control" style="background: dodgerblue"><b>Return Date</b></label>
                     <input type="date" class="form-control search-slt" placeholder="Departure">
-                </div>
+                </div>-->
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="text" class="form-control search-slt" placeholder="Origin">
+                            <label>Departure City</label>
+                            <select name="departure" class="form-control search-slt">
+                                <option th:each="city : ${cities}"
+                                        th:value="${city.getCityId()}"
+                                        th:text="${city.getCityName()}">
+                                </option>
+                            </select>
+                            <!--<input type="text" class="form-control search-slt" placeholder="Departure City">-->
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="text" class="form-control search-slt" placeholder="Destination">
+                            <label>Destination City</label>
+                            <select name="destination" class="form-control search-slt">
+                                <option th:each="city : ${cities}"
+                                        th:value="${city.getCityId()}"
+                                        th:text="${city.getCityName()}">
+                                </option>
+                            </select>
+                            <!--<input type="text" class="form-control search-slt" placeholder="Destination City">-->
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1">
+                            <label>No. of Passengers</label>
+                            <select class="form-control search-slt" id="exampleFormControlSelect1" name="passengers">
                                 <option>Passengers</option>
                                 <option>1</option>
                                 <option>2</option>
