@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightServiceImpl implements FlightService {
@@ -37,6 +38,11 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Flight create(LocalDateTime departure, LocalDateTime arrival, City departureCity, City arrivalCity) {
         return this.flightRepository.save(new Flight(departure, arrival, departureCity, arrivalCity));
+    }
+
+    @Override
+    public Optional<Flight> findById(Long id) {
+        return this.flightRepository.findById(id);
     }
 
 

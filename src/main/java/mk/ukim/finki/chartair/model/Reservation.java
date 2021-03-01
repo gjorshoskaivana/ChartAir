@@ -40,11 +40,11 @@ public class Reservation {
     private Double computePrice(TravelClass travelClass){
         double price = 0.0;
         if(travelClass == TravelClass.FIRST_CLASS)
-            price = 150.0*passengers.size() + 50.0*numberOfBags;
+            price = 150.0*passengers.size();
         else if(travelClass == TravelClass.BUSINESS)
-            price = 50.0*passengers.size() + 50.0*numberOfBags;
+            price = 50.0*passengers.size();
         else if(travelClass == TravelClass.ECONOMY)
-            price = 20.0*passengers.size() + 50.0*numberOfBags;
+            price = 20.0*passengers.size();
         return price;
     }
 
