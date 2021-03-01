@@ -25,11 +25,12 @@
                             <td th:text="${flight.getArrivalCity().getCityName()}"></td>
                             <td th:text="${flight.getExpectedLanding()}"></td>
                             <td class="text-right">
-                                <form th:action="@{'booking/{id}' (id=${flight.getFlightId()})}"
+                                <form th:action="@{'/booking/select-package/{id}' (id=${flight.getFlightId()})}"
                                       th:method="GET" sec:authorize="isAuthenticated()">
-                                    <a href="/booking/select-package" class="btn btn-block btn-dark add-product-btn">
-                                        Book now
-                                    </a>
+                                    <button type="submit"
+                                            class="btn btn-sm btn-primary">
+                                        Book seats
+                                    </button>
 
                                 </form>
                             </td>

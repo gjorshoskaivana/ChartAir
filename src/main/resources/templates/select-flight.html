@@ -2,9 +2,12 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">Reservation in progress...</h1>
-            <h3>Please select your bundle</h3>
-            <p>${departure}</p>
+            <h3>Please select your bundle for:</h3>
+            <!--<p>${departure}</p>-->
 
+            <span>Departure city:</span> <p th:text="${session.departure.getCityName()}"></p>
+            <span>Destination city:</span><p th:text="${session.destination.getCityName()}"></p>
+            <span>Number of passengers:</span><p th:text="${session.passengers}"></p>
         </div>
     </section>
 
@@ -65,5 +68,5 @@
                 </a>
             </div>
         </div>
-
+    </div>
 </div>

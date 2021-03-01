@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -32,25 +33,29 @@ public class BookingController {
     @GetMapping("/flights")
     public String getFlights(@RequestParam Long departure,
                              @RequestParam Long destination,
-                             Model model){
+                             @RequestParam int passengers,
+                             Model model, HttpSession session){
         List<Flight> flightList = this.flightService.findAllByDepartureAndArrivalCity(departure, destination);
         model.addAttribute("flights", flightList);
         model.addAttribute("bodyContent", "list-flights");
+        session.setAttribute("passengers", passengers);
+        session.setAttribute("departure", this.cityService.findCityById(departure));
+        session.setAttribute("destination", this.cityService.findCityById(destination));
         return "master-template";
     }
-    @GetMapping("/select-package")
-    public String selectFlight(@RequestParam Long departure,
-                               @RequestParam Long destination,
+
+    @GetMapping("/select-package/{id}")
+    public String selectFlight(@PathVariable Long id,
+                               HttpSession session,
                                Model model){
-        //if (this.flightService.findById(id).isPresent()) {
-            //Flight departureflight = this.flightService.findById(departure).get();
-            //Flight destination = this.flightService.findById(departure).get();
-            model.addAttribute("departure", this.cityService.findCityById(departure));
-            model.addAttribute("destination", this.cityService.findCityById(destination));
-            //model.addAttribute("flight", "departureflight");
-           // model.addAttribute("msg",departureflight+"  ----->  "+destination);
+
+        if(this.flightService.findById(id).isPresent()){
+            Flight flight = this.flightService.findById(id).get();
+            session.setAttribute("flight", flight);
+
             model.addAttribute("bodyContent", "select-flight");
             return "master-template";
         }
-
+        return "redirect:/booking/flights";
+    }
 }

@@ -2,7 +2,6 @@ package mk.ukim.finki.chartair.service.impl;
 
 import mk.ukim.finki.chartair.model.City;
 import mk.ukim.finki.chartair.model.Flight;
-import mk.ukim.finki.chartair.repository.CityRepository;
 import mk.ukim.finki.chartair.repository.FlightRepository;
 import mk.ukim.finki.chartair.service.CityService;
 import mk.ukim.finki.chartair.service.FlightService;
@@ -44,6 +43,5 @@ public class FlightServiceImpl implements FlightService {
     public Optional<Flight> findById(Long id) {
         return this.flightRepository.findById(id);
     }
-
 
 }
