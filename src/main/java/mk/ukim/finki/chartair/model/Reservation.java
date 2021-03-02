@@ -23,6 +23,8 @@ public class Reservation {
 
     private Double priceOfReservation;
 
+    private TravelClass travelClass;
+
     public Reservation() {
     }
 
@@ -40,12 +42,17 @@ public class Reservation {
     private Double computePrice(TravelClass travelClass){
         double price = 0.0;
         if(travelClass == TravelClass.FIRST_CLASS)
-            price = 150.0*passengers.size();
+            price = 150.0;//*passengers.size();
         else if(travelClass == TravelClass.BUSINESS)
-            price = 50.0*passengers.size();
+            price = 50.0;//*passengers.size();
         else if(travelClass == TravelClass.ECONOMY)
-            price = 20.0*passengers.size();
+            price = 20.0;//*passengers.size();
         return price;
+    }
+    public Reservation(Integer numberOfBags,Double priceOfReservation,TravelClass travelClass) {
+        this.numberOfBags = numberOfBags;
+        this.priceOfReservation = computePrice(travelClass);
+        this.travelClass=travelClass;
     }
 
 }

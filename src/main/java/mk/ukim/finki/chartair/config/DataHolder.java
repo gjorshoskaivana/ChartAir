@@ -2,13 +2,13 @@ package mk.ukim.finki.chartair.config;
 
 import mk.ukim.finki.chartair.model.Role;
 import mk.ukim.finki.chartair.model.User;
-import mk.ukim.finki.chartair.service.CityService;
-import mk.ukim.finki.chartair.service.FlightService;
-import mk.ukim.finki.chartair.service.UserService;
+import mk.ukim.finki.chartair.service.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
+
+import static mk.ukim.finki.chartair.model.TravelClass.ECONOMY;
 
 @Component
 public class DataHolder {
@@ -16,11 +16,15 @@ public class DataHolder {
     private final UserService userService;
     private final CityService cityService;
     private final FlightService flightService;
+    private final ReservationService reservationService;
+    //private final PassengerService passengerService;
 
-    public DataHolder(UserService userService, CityService cityService, FlightService flightService) {
+
+    public DataHolder(UserService userService, CityService cityService, FlightService flightService, ReservationService reservationService) {
         this.userService = userService;
         this.cityService = cityService;
         this.flightService = flightService;
+        this.reservationService = reservationService;
     }
 
     @PostConstruct
@@ -37,5 +41,7 @@ public class DataHolder {
         flightService.create(LocalDateTime.now(), LocalDateTime.now(),
                 this.cityService.findCitiesByNameLike("City0").get(0),
                 this.cityService.findCitiesByNameLike("City1").get(0));
+
+        reservationService.create(1,10.0, ECONOMY);
     }
 }

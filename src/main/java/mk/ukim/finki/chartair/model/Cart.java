@@ -20,10 +20,15 @@ public class Cart {
     @ManyToOne
     private User user;
 
+    @Enumerated(EnumType.STRING)
+    private ShoppingCartStatus status;
+
+
     public Cart(){}
 
     public Cart(User user){
         this.user = user;
         this.reservations = new ArrayList<>();
+        this.status = ShoppingCartStatus.CREATED;
     }
 }

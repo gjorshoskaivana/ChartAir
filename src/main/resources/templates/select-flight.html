@@ -1,9 +1,7 @@
 <div xmlns:th="http://www.thymeleaf.org">
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Reservation in progress...</h1>
-            <h3>Please select your bundle for:</h3>
-            <!--<p>${departure}</p>-->
+            <h1 class="jumbotron-heading">Please select your bundle for:</h1>
 
             <span>Departure city:</span> <p th:text="${session.departure.getCityName()}"></p>
             <span>Destination city:</span><p th:text="${session.destination.getCityName()}"></p>
@@ -27,7 +25,7 @@
                 <br>
                 <br>
 
-                <a class="btn btn-block btn-success add-product-btn" style="align-content: center">
+                <a href="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center">
                     Reserve
                 </a>
             </div>
@@ -45,7 +43,7 @@
                 <br>
                 <br>
                 <br>
-                <a class="btn btn-block btn-success add-product-btn" style="align-content: center">
+                <a href="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center">
                     Reserve
                 </a>
             </div>
@@ -63,7 +61,7 @@
                 <br>
                 <br>
                 <br>
-                <a class="btn btn-block btn-success add-product-btn " style="align-content: center; bottom: -100px">
+                <a href="/shopping-cart" class="btn btn-block btn-success add-product-btn " style="align-content: center; bottom: -100px">
                     Reserve
                 </a>
             </div>
