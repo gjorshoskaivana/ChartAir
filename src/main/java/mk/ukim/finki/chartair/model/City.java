@@ -18,19 +18,12 @@ public class City {
     @ManyToOne
     private Country country;
 
-    @OneToMany(mappedBy = "departureCity")
-    private List<Flight> departingFlights;
-
-    @OneToMany(mappedBy = "arrivalCity")
-    private List<Flight> arrivingFlights;
 
     public City() {
     }
 
-    public City(String cityName, Country country, List<Flight> departingFlights, List<Flight> arrivingFlights) {
+    public City(String cityName, Country country) {
         this.cityName = cityName;
         this.country = country;
-        this.departingFlights = departingFlights;
-        this.arrivingFlights = arrivingFlights;
     }
 }

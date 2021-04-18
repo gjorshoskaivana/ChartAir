@@ -1,4 +1,4 @@
-package mk.ukim.finki.chartair.model;
+package mk.ukim.finki.chartair.model.enumerations;
 
 public enum TravelClass {
     ECONOMY,

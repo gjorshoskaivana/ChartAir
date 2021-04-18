@@ -15,14 +15,10 @@ public class Country {
 
     private String countryName;
 
-    @OneToMany(mappedBy = "country")
-    private List<City> cities;
-
     public Country() {
     }
 
-    public Country(String countryName, List<City> cities) {
+    public Country(String countryName) {
         this.countryName = countryName;
-        this.cities = cities;
     }
 }

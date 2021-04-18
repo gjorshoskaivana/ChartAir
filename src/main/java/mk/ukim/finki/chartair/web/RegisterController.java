@@ -1,6 +1,6 @@
 package mk.ukim.finki.chartair.web;
 
-import mk.ukim.finki.chartair.model.Role;
+import mk.ukim.finki.chartair.model.enumerations.Role;
 import mk.ukim.finki.chartair.model.exceptions.InvalidArgumentsException;
 import mk.ukim.finki.chartair.model.exceptions.PasswordsDoNotMatchException;
 import mk.ukim.finki.chartair.service.AuthService;

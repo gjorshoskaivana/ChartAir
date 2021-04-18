@@ -1,4 +1,4 @@
-package mk.ukim.finki.chartair.model;
+package mk.ukim.finki.chartair.model.enumerations;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

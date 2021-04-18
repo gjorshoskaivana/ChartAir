@@ -2,7 +2,7 @@ package mk.ukim.finki.chartair.service.impl;
 
 import mk.ukim.finki.chartair.model.Cart;
 import mk.ukim.finki.chartair.model.Reservation;
-import mk.ukim.finki.chartair.model.ShoppingCartStatus;
+import mk.ukim.finki.chartair.model.enumerations.ShoppingCartStatus;
 import mk.ukim.finki.chartair.model.User;
 import mk.ukim.finki.chartair.model.exceptions.ReservationAlreadyInShoppingCartException;
 import mk.ukim.finki.chartair.model.exceptions.ReservationNotFoundException;

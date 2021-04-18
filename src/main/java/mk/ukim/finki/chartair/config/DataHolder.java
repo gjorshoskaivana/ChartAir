@@ -1,6 +1,6 @@
 package mk.ukim.finki.chartair.config;
 
-import mk.ukim.finki.chartair.model.Role;
+import mk.ukim.finki.chartair.model.enumerations.Role;
 import mk.ukim.finki.chartair.model.User;
 import mk.ukim.finki.chartair.service.*;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 
-import static mk.ukim.finki.chartair.model.TravelClass.ECONOMY;
+import static mk.ukim.finki.chartair.model.enumerations.TravelClass.ECONOMY;
 
 @Component
 public class DataHolder {
@@ -35,7 +35,7 @@ public class DataHolder {
                 "admin", "admin", Role.ROLE_ADMIN);
 
         for(int i=0; i<10; i++){
-            this.cityService.create("City"+i, null, null, null);
+            this.cityService.create("City"+i, null);
         }
 
         flightService.create(LocalDateTime.now(), LocalDateTime.now(),

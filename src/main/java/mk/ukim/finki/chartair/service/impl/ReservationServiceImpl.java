@@ -1,9 +1,7 @@
 package mk.ukim.finki.chartair.service.impl;
 
-import mk.ukim.finki.chartair.model.Flight;
-import mk.ukim.finki.chartair.model.Passenger;
 import mk.ukim.finki.chartair.model.Reservation;
-import mk.ukim.finki.chartair.model.TravelClass;
+import mk.ukim.finki.chartair.model.enumerations.TravelClass;
 import mk.ukim.finki.chartair.repository.ReservationRepository;
 import mk.ukim.finki.chartair.service.ReservationService;
 import org.springframework.stereotype.Service;

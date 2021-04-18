@@ -1,6 +1,6 @@
 package mk.ukim.finki.chartair.service.impl;
 
-import mk.ukim.finki.chartair.model.Role;
+import mk.ukim.finki.chartair.model.enumerations.Role;
 import mk.ukim.finki.chartair.model.User;
 import mk.ukim.finki.chartair.model.exceptions.InvalidUsernameOrPasswordException;
 import mk.ukim.finki.chartair.model.exceptions.PasswordsDoNotMatchException;

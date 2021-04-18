@@ -40,8 +40,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City create(String cityName, Country country, List<Flight> departingFlights, List<Flight> arrivingFlights) {
-        return cityRepository.save(new City(cityName, country, departingFlights, arrivingFlights));
+    public City create(String cityName, Country country) {
+        return cityRepository.save(new City(cityName, country));
     }
 
     @Override

@@ -1,7 +1,7 @@
 package mk.ukim.finki.chartair.service;
 
 
-import mk.ukim.finki.chartair.model.Role;
+import mk.ukim.finki.chartair.model.enumerations.Role;
 import mk.ukim.finki.chartair.model.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 

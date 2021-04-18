@@ -1,7 +1,7 @@
 package mk.ukim.finki.chartair.repository;
 
 import mk.ukim.finki.chartair.model.Cart;
-import mk.ukim.finki.chartair.model.ShoppingCartStatus;
+import mk.ukim.finki.chartair.model.enumerations.ShoppingCartStatus;
 import mk.ukim.finki.chartair.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

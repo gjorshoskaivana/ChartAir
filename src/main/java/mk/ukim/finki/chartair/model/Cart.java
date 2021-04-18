@@ -1,6 +1,7 @@
 package mk.ukim.finki.chartair.model;
 
 import lombok.Data;
+import mk.ukim.finki.chartair.model.enumerations.ShoppingCartStatus;
 
 import javax.persistence.*;
 import java.util.ArrayList;

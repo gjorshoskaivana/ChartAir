@@ -1,8 +1,8 @@
 package mk.ukim.finki.chartair.service;
 
 import mk.ukim.finki.chartair.model.*;
+import mk.ukim.finki.chartair.model.enumerations.TravelClass;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,6 +1,7 @@
 package mk.ukim.finki.chartair.model;
 
 import lombok.Data;
+import mk.ukim.finki.chartair.model.enumerations.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
