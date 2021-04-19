@@ -26,11 +26,13 @@ public class Reservation {
 
     private TravelClass travelClass;
 
+    private Integer numPassengers;
+
     public Reservation() {
     }
 
-    public Reservation(List<Passenger> passengers, Flight flight, Integer numberOfBags, TravelClass travelClass) {
-        this.passengers = passengers;
+    public Reservation(Integer passengers, Flight flight, Integer numberOfBags, TravelClass travelClass) {
+        this.numPassengers = passengers;
         this.flight = flight;
         this.numberOfBags = numberOfBags;
         this.priceOfReservation = computePrice(travelClass);
@@ -43,15 +45,16 @@ public class Reservation {
     private Double computePrice(TravelClass travelClass){
         double price = 0.0;
         if(travelClass == TravelClass.FIRST_CLASS)
-            price = 150.0;//*passengers.size();
+            price = 150.0 * numPassengers;
         else if(travelClass == TravelClass.BUSINESS)
-            price = 50.0;//*passengers.size();
+            price = 50.0 * numPassengers;
         else if(travelClass == TravelClass.ECONOMY)
-            price = 20.0;//*passengers.size();
+            price = 20.0 * numPassengers;
         return price;
     }
-    public Reservation(Integer numberOfBags,Double priceOfReservation,TravelClass travelClass) {
+    public Reservation(Integer numberOfBags,TravelClass travelClass, Integer numPassengers) {
         this.numberOfBags = numberOfBags;
+        this.numPassengers = numPassengers;
         this.priceOfReservation = computePrice(travelClass);
         this.travelClass=travelClass;
     }

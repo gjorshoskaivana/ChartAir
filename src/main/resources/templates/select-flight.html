@@ -25,9 +25,14 @@
                 <br>
                 <br>
 
-                <a href="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center">
-                    Reserve
-                </a>
+                <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
+                    <input type="text" style="display: none" th:value="economy" name="travelClass">
+                    <input type="number" style="display: none" th:value="0" name="noBags">
+                    <button type="submit"
+                            class="btn btn-sm btn-primary cart-product">
+                        <i class="fa fa-trash">Reserve</i>
+                    </button>
+                </form>
             </div>
             <div class="col" style="background: lightgray; margin: 5px;height: 400px">
                 <h3 style="background: dodgerblue; text-align: center; margin: 5px;">CHARTAIR BUSINESS</h3>
@@ -43,9 +48,14 @@
                 <br>
                 <br>
                 <br>
-                <a href="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center">
-                    Reserve
-                </a>
+                <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
+                    <input type="text" style="display: none" th:value="business" name="travelClass">
+                    <input type="number" style="display: none" th:value="2" name="noBags">
+                    <button type="submit"
+                            class="btn btn-sm btn-primary cart-product">
+                        <i class="fa fa-trash">Reserve</i>
+                    </button>
+                </form>
             </div>
             <div class="col" style="background: lightgray; margin: 5px;height: 400px">
                 <h3 style="background: dodgerblue; text-align: center; margin: 5px;">CHARTAIR FIRST CLASS</h3>
@@ -61,9 +71,14 @@
                 <br>
                 <br>
                 <br>
-                <a href="/shopping-cart" class="btn btn-block btn-success add-product-btn " style="align-content: center; bottom: -100px">
-                    Reserve
-                </a>
+                <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
+                    <input type="text" style="display: none" th:value="firstClass" name="travelClass">
+                    <input type="number" style="display: none" th:value="2" name="noBags">
+                    <button type="submit"
+                            class="btn btn-sm btn-primary cart-product">
+                        <i class="fa fa-trash">Reserve</i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>

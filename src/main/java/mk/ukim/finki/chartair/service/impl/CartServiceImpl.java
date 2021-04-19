@@ -54,7 +54,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Cart addProductToCart(String username, Long reservationId) {
+    public Cart addReservationToCart(String username, Long reservationId) {
         Cart shoppingCart = this.getActiveCart(username);
         Reservation reservation = this.reservationService.findById(reservationId)
                 .orElseThrow(() -> new ReservationNotFoundException(reservationId));

@@ -1,7 +1,9 @@
 package mk.ukim.finki.chartair.service.impl;
 
+import mk.ukim.finki.chartair.model.Flight;
 import mk.ukim.finki.chartair.model.Reservation;
 import mk.ukim.finki.chartair.model.enumerations.TravelClass;
+import mk.ukim.finki.chartair.repository.FlightRepository;
 import mk.ukim.finki.chartair.repository.ReservationRepository;
 import mk.ukim.finki.chartair.service.ReservationService;
 import org.springframework.stereotype.Service;
@@ -13,9 +15,11 @@ import java.util.Optional;
 public class ReservationServiceImpl implements ReservationService {
 
     private final ReservationRepository reservationRepository;
+    private final FlightRepository flightRepository;
 
-    public ReservationServiceImpl(ReservationRepository reservationRepository) {
+    public ReservationServiceImpl(ReservationRepository reservationRepository, FlightRepository flightRepository) {
         this.reservationRepository = reservationRepository;
+        this.flightRepository = flightRepository;
     }
 
     @Override
@@ -29,7 +33,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Reservation create(Integer numberOfBags, Double price, TravelClass travelClass) {
-        return this.reservationRepository.save(new Reservation(numberOfBags, price, travelClass));
+    public Reservation create(Integer numberOfBags, TravelClass travelClass, Integer numPassengers, Flight flight) {
+        //Flight flight1 = this.flightRepository.findById(flight).get();
+        return this.reservationRepository.save(new Reservation(numPassengers, flight, numberOfBags, travelClass));
     }
 }

@@ -1,8 +1,13 @@
 package mk.ukim.finki.chartair.web;
 
 import mk.ukim.finki.chartair.model.Cart;
+import mk.ukim.finki.chartair.model.Flight;
+import mk.ukim.finki.chartair.model.Reservation;
 import mk.ukim.finki.chartair.model.User;
+import mk.ukim.finki.chartair.model.enumerations.TravelClass;
 import mk.ukim.finki.chartair.service.CartService;
+import mk.ukim.finki.chartair.service.FlightService;
+import mk.ukim.finki.chartair.service.ReservationService;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -16,9 +21,13 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ShoppingCartController {
     private final CartService cartService;
+    private final ReservationService reservationService;
+    private final FlightService flightService;
 
-    public ShoppingCartController(CartService cartService) {
+    public ShoppingCartController(CartService cartService, ReservationService reservationService, FlightService flightService) {
         this.cartService = cartService;
+        this.reservationService = reservationService;
+        this.flightService = flightService;
     }
 
     @GetMapping
@@ -35,11 +44,26 @@ public class ShoppingCartController {
         model.addAttribute("bodyContent", "shopping-cart");
         return "master-template";
     }
-    @PostMapping("/add-reservation/{id}")
-    public String addProductToShoppingCart(@PathVariable Long id, HttpServletRequest req, Authentication authentication) {
+    @PostMapping
+    public String addProductToShoppingCart(@RequestParam String travelClass,
+                                           @RequestParam Integer noBags,
+                                           HttpServletRequest req,
+                                           Authentication authentication) {
         try {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            this.cartService.addProductToCart(user.getUsername(), id);
+            Integer numPassengers = (Integer)req.getSession().getAttribute("passengers");
+            Integer numBags = noBags * numPassengers;
+            Flight flight = (Flight)req.getSession().getAttribute("flight");
+            TravelClass travelClass1 = null;
+            if(travelClass.equals("business"))
+                travelClass1 = TravelClass.BUSINESS;
+            else if(travelClass.equals("economy"))
+                travelClass1 = TravelClass.ECONOMY;
+            else travelClass1 = TravelClass.FIRST_CLASS;
+
+            Reservation r = this.reservationService.create(numBags, travelClass1, numPassengers, flight);
+
+            this.cartService.addReservationToCart(user.getUsername(), r.getReservationId());
             return "redirect:/shopping-cart";
         } catch (RuntimeException exception) {
             return "redirect:/shopping-cart?error=" + exception.getMessage();

@@ -8,7 +8,7 @@ import java.util.List;
 public interface CartService {
     List<Reservation> listAllReservationsCart(Long cartId);
     Cart getActiveCart(String username);
-    Cart addProductToCart(String username, Long productId);
+    Cart addReservationToCart(String username, Long productId);
 
 }
 

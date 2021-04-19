@@ -52,7 +52,6 @@ public class BookingController {
         if(this.flightService.findById(id).isPresent()){
             Flight flight = this.flightService.findById(id).get();
             session.setAttribute("flight", flight);
-
             model.addAttribute("bodyContent", "select-flight");
             return "master-template";
         }

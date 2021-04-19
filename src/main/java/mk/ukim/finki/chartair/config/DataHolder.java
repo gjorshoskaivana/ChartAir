@@ -42,6 +42,5 @@ public class DataHolder {
                 this.cityService.findCitiesByNameLike("City0").get(0),
                 this.cityService.findCitiesByNameLike("City1").get(0));
 
-        reservationService.create(1,10.0, ECONOMY);
     }
 }
