@@ -37,4 +37,9 @@ public class ReservationServiceImpl implements ReservationService {
         //Flight flight1 = this.flightRepository.findById(flight).get();
         return this.reservationRepository.save(new Reservation(numPassengers, flight, numberOfBags, travelClass));
     }
+
+    @Override
+    public void delete(Long id) {
+        this.reservationRepository.deleteById(id);
+    }
 }

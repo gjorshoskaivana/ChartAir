@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -25,7 +26,12 @@ public class BookingController {
     }
 
     @GetMapping
-    public String getBookingPage(Model model) {
+    public String getBookingPage(@RequestParam(required = false) String error,
+                                 Model model) {
+        if (error != null && !error.isEmpty()) {
+            model.addAttribute("hasError", true);
+            model.addAttribute("error", error);
+        }
         model.addAttribute("cities", this.cityService.findAll());
         model.addAttribute("cities_ar", this.cityService.findAll());
         model.addAttribute("bodyContent", "booking");
@@ -54,10 +60,8 @@ public class BookingController {
             session.setAttribute("departure", this.cityService.findCityById(departure));
             session.setAttribute("destination", this.cityService.findCityById(destination));
             return "master-template";
-        } catch (InvalidArgumentsException e){
-            model.addAttribute("hasError", true);
-            model.addAttribute("error", e.getMessage());
-            return "redirect:/booking";
+        } catch (RuntimeException e){
+            return "redirect:/booking?error=" + e.getMessage();
         }
 
     }

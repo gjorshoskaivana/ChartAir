@@ -8,7 +8,6 @@
             <span>Number of passengers:</span><p th:text="${session.passengers}"></p>
         </div>
     </section>
-
     <div class="container">
         <div class="row align-items-start">
             <div class="col" style="background: lightgray; margin: 5px; height: 400px" >
@@ -26,8 +25,8 @@
                 <br>
 
                 <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
-                    <input type="text" style="display: none" th:value="economy" name="travelClass">
-                    <input type="number" style="display: none" th:value="0" name="noBags">
+                    <input style="display: none" id="ECONOMY" value="ECONOMY" name="travelClass">
+                    <input type="number" style="display: none" value="0" name="noBags">
                     <button type="submit"
                             class="btn btn-sm btn-primary cart-product">
                         <i class="fa fa-trash">Reserve</i>
@@ -49,8 +48,8 @@
                 <br>
                 <br>
                 <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
-                    <input type="text" style="display: none" th:value="business" name="travelClass">
-                    <input type="number" style="display: none" th:value="2" name="noBags">
+                    <input style="display: none" id="BUSINESS" value="BUSINESS" name="travelClass">
+                    <input type="number" style="display: none" value="2" name="noBags">
                     <button type="submit"
                             class="btn btn-sm btn-primary cart-product">
                         <i class="fa fa-trash">Reserve</i>
@@ -72,8 +71,8 @@
                 <br>
                 <br>
                 <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
-                    <input type="text" style="display: none" th:value="firstClass" name="travelClass">
-                    <input type="number" style="display: none" th:value="2" name="noBags">
+                    <input style="display: none" id="FIRST_CLASS" value="FIRST_CLASS" name="travelClass">
+                    <input type="number" style="display: none" value="2" name="noBags">
                     <button type="submit"
                             class="btn btn-sm btn-primary cart-product">
                         <i class="fa fa-trash">Reserve</i>

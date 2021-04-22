@@ -36,6 +36,7 @@ public class Reservation {
         this.flight = flight;
         this.numberOfBags = numberOfBags;
         this.priceOfReservation = computePrice(travelClass);
+        this.travelClass = travelClass;
     }
 
     /*

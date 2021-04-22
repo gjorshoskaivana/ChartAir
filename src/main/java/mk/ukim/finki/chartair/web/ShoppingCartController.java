@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/shopping-cart")
-
 public class ShoppingCartController {
     private final CartService cartService;
     private final ReservationService reservationService;
@@ -42,8 +41,9 @@ public class ShoppingCartController {
         model.addAttribute("bodyContent", "shopping-cart");
         return "master-template";
     }
+
     @PostMapping
-    public String addProductToShoppingCart(@RequestParam String travelClass,
+    public String addProductToShoppingCart(@RequestParam TravelClass travelClass,
                                            @RequestParam Integer noBags,
                                            HttpServletRequest req,
                                            Authentication authentication) {
@@ -52,20 +52,21 @@ public class ShoppingCartController {
             Integer numPassengers = (Integer)req.getSession().getAttribute("passengers");
             Integer numBags = noBags * numPassengers;
             Flight flight = (Flight)req.getSession().getAttribute("flight");
-            TravelClass travelClass1 = null;
-            if(travelClass.equals("business"))
-                travelClass1 = TravelClass.BUSINESS;
-            else if(travelClass.equals("economy"))
-                travelClass1 = TravelClass.ECONOMY;
-            else travelClass1 = TravelClass.FIRST_CLASS;
 
-            Reservation r = this.reservationService.create(numBags, travelClass1, numPassengers, flight);
-
+            Reservation r = this.reservationService.create(numBags, travelClass, numPassengers, flight);
             this.cartService.addReservationToCart(user.getUsername(), r.getReservationId());
+
             return "redirect:/shopping-cart";
         } catch (RuntimeException exception) {
             return "redirect:/shopping-cart?error=" + exception.getMessage();
         }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteReservation(@PathVariable Long id) {
+            this.reservationService.delete(id);
+            return "redirect:/shopping-cart";
+
     }
 
 
