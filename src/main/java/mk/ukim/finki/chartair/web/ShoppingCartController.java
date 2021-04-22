@@ -22,12 +22,10 @@ import javax.servlet.http.HttpServletRequest;
 public class ShoppingCartController {
     private final CartService cartService;
     private final ReservationService reservationService;
-    private final FlightService flightService;
 
-    public ShoppingCartController(CartService cartService, ReservationService reservationService, FlightService flightService) {
+    public ShoppingCartController(CartService cartService, ReservationService reservationService) {
         this.cartService = cartService;
         this.reservationService = reservationService;
-        this.flightService = flightService;
     }
 
     @GetMapping

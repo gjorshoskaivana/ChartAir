@@ -10,8 +10,8 @@ import java.util.Optional;
 
 public interface FlightService {
     List<Flight> listAll();
+    List<Flight> findAllByDepartureCity(Long departureId);
     List<Flight> findAllByDepartureAndArrivalCity(Long departureId, Long arrivalId);
     Flight create(LocalDateTime departure, LocalDateTime arrival, City departureCity, City arrivalCity);
-
     Optional<Flight> findById(Long id);
 }

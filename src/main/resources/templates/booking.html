@@ -3,6 +3,11 @@
 
     </div>
 </div>
+
+<div th:if="${hasError}">
+    <h5 class="text-center text-danger" th:text="${error}"></h5>
+</div>
+
 <section class="search-sec carousel-caption" style="top: 100px" xmlns:th="http://www.thymeleaf.org">
     <div class="container ">
         <form action="/booking/flights" method="get" novalidate="novalidate">
@@ -20,9 +25,11 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <label>Departure City</label>
                             <select name="departure" class="form-control search-slt">
+                                <!--<option disabled selected value="0"> -- select an option -- </option>-->
                                 <option th:each="city : ${cities}"
                                         th:value="${city.getCityId()}"
                                         th:text="${city.getCityName()}">
+                                    <a th:href="@{'/booking/{id}' (id=${city.getCityId()})}"></a>
                                 </option>
                             </select>
                             <!--<input type="text" class="form-control search-slt" placeholder="Departure City">-->
@@ -30,7 +37,8 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <label>Destination City</label>
                             <select name="destination" class="form-control search-slt">
-                                <option th:each="city : ${cities}"
+                                <!--<option disabled selected value> -- select an option -- </option>-->
+                                <option th:each="city : ${cities_ar}"
                                         th:value="${city.getCityId()}"
                                         th:text="${city.getCityName()}">
                                 </option>

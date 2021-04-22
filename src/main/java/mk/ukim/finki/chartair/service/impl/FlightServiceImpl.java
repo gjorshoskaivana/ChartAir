@@ -2,6 +2,7 @@ package mk.ukim.finki.chartair.service.impl;
 
 import mk.ukim.finki.chartair.model.City;
 import mk.ukim.finki.chartair.model.Flight;
+import mk.ukim.finki.chartair.model.exceptions.InvalidArgumentsException;
 import mk.ukim.finki.chartair.repository.FlightRepository;
 import mk.ukim.finki.chartair.service.CityService;
 import mk.ukim.finki.chartair.service.FlightService;
@@ -28,7 +29,16 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+    public List<Flight> findAllByDepartureCity(Long departureId) {
+        City city = this.cityService.findCityById(departureId);
+        return this.flightRepository.findAllByDepartureCity(city);
+    }
+
+    @Override
     public List<Flight> findAllByDepartureAndArrivalCity(Long departureId, Long arrivalId) {
+        if(departureId == null || arrivalId == null || departureId == 0 || arrivalId == 0)
+            throw new InvalidArgumentsException();
+
         City departure = this.cityService.findCityById(departureId);
         City arrival = this.cityService.findCityById(arrivalId);
         return this.flightRepository.findAllByDepartureCityAndArrivalCity(departure, arrival);

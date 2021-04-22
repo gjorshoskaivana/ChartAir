@@ -30,9 +30,9 @@ public class DataHolder {
     @PostConstruct
     public void initData(){
         User user = userService.register("user", "user", "user",
-                "user", "user", Role.ROLE_USER);
+                "user", "user");
         User admin = userService.register("admin", "admin", "admin",
-                "admin", "admin", Role.ROLE_ADMIN);
+                "admin", "admin");
 
         for(int i=0; i<10; i++){
             this.cityService.create("City"+i, null);
