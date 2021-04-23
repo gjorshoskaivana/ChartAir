@@ -27,7 +27,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="reservation : ${reservations}" class="cart-item">
+                        <tr th:each="reservation : ${reservations}" class="cart-item" th:classappend="${reservation.isCheckedIn()} ? table-success ">
                             <td>
                                 <th:block>
                                     <div th:text="${reservation.getFlight().getDepartureCity().getCityName()}"></div>
@@ -52,12 +52,14 @@
                             <td th:text="${reservation.getPriceOfReservation()}"></td>
                             <td class="text-right">
                                 <form th:action="@{'/shopping-cart/delete/{id}' (id=${reservation.getReservationId()})}"
-                                      th:method="DELETE">
+                                      th:method="POST">
                                     <button type="submit"
                                             class="btn btn-sm btn-danger delete-product">
-                                        <i class="fa fa-trash">Delete</i>
+                                        <i class="fa fa-trash">Cancel Reservation</i>
                                     </button>
                                 </form>
+
+                                <div th:if="${!reservation.isCheckedIn()}">
                                 <form th:action="@{'/shopping-cart/check-in/{id}' (id=${reservation.getReservationId()})}"
                                       th:method="POST">
                                     <button type="submit"
@@ -65,7 +67,7 @@
                                         <i class="fa fa-trash">Check-in</i>
                                     </button>
                                 </form>
-
+                                </div>
                             </td>
                         </tr>
                         </tbody>

@@ -11,4 +11,5 @@ public interface ReservationService {
     Optional<Reservation> findById(Long id);
     Reservation create(Integer numberOfBags, TravelClass travelClass, Integer numPassengers, Flight flightId);
     void delete(Long id);
+    void checkIn(Long id);
 }

@@ -28,6 +28,8 @@ public class Reservation {
 
     private Integer numPassengers;
 
+    private boolean checkedIn;
+
     public Reservation() {
     }
 
@@ -37,6 +39,7 @@ public class Reservation {
         this.numberOfBags = numberOfBags;
         this.priceOfReservation = computePrice(travelClass);
         this.travelClass = travelClass;
+        this.checkedIn = false;
     }
 
     /*

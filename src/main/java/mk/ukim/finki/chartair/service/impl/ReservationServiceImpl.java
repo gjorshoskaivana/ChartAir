@@ -3,6 +3,7 @@ package mk.ukim.finki.chartair.service.impl;
 import mk.ukim.finki.chartair.model.Flight;
 import mk.ukim.finki.chartair.model.Reservation;
 import mk.ukim.finki.chartair.model.enumerations.TravelClass;
+import mk.ukim.finki.chartair.model.exceptions.ReservationNotFoundException;
 import mk.ukim.finki.chartair.repository.FlightRepository;
 import mk.ukim.finki.chartair.repository.ReservationRepository;
 import mk.ukim.finki.chartair.service.ReservationService;
@@ -41,5 +42,12 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void delete(Long id) {
         this.reservationRepository.deleteById(id);
+    }
+
+    @Override
+    public void checkIn(Long id) {
+        Reservation reservation = this.reservationRepository.findById(id).orElseThrow(() -> new ReservationNotFoundException(id));
+        reservation.setCheckedIn(true);
+        this.reservationRepository.save(reservation);
     }
 }

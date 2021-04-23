@@ -62,7 +62,7 @@ public class ShoppingCartController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteReservation(@PathVariable Long id, HttpServletRequest req, Authentication authentication) {
         try {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -76,5 +76,16 @@ public class ShoppingCartController {
         }
     }
 
+
+    @PostMapping("/check-in/{id}")
+    public String checkIn(@PathVariable Long id){
+        try{
+            this.reservationService.checkIn(id);
+            return "redirect:/shopping-cart";
+        } catch (RuntimeException exception) {
+        return "redirect:/shopping-cart?error=" + exception.getMessage();
+    }
+
+    }
 
 }
