@@ -66,4 +66,14 @@ public class CartServiceImpl implements CartService {
         return this.cartRepository.save(shoppingCart);
     }
 
+    @Override
+    public Cart deleteReservatioFromCart(String username, Long reservationId) {
+        Cart shoppingCart = this.getActiveCart(username);
+        Reservation reservation = this.reservationService.findById(reservationId)
+                .orElseThrow(() -> new ReservationNotFoundException(reservationId));
+        shoppingCart.getReservations().remove(reservation);
+        return this.cartRepository.save(shoppingCart);
+    }
+
+
 }

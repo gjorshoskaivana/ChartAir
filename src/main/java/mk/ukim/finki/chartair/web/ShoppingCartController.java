@@ -63,10 +63,17 @@ public class ShoppingCartController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteReservation(@PathVariable Long id) {
+    public String deleteReservation(@PathVariable Long id, HttpServletRequest req, Authentication authentication) {
+        try {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            Reservation reservation = this.reservationService.findById(id).orElseGet(null);
+            this.cartService.deleteReservatioFromCart(user.getUsername(), reservation.getReservationId());
             this.reservationService.delete(id);
             return "redirect:/shopping-cart";
 
+        } catch (RuntimeException exception) {
+            return "redirect:/shopping-cart?error=" + exception.getMessage();
+        }
     }
 
 

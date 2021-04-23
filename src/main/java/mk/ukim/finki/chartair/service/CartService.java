@@ -9,6 +9,6 @@ public interface CartService {
     List<Reservation> listAllReservationsCart(Long cartId);
     Cart getActiveCart(String username);
     Cart addReservationToCart(String username, Long productId);
-
+    Cart deleteReservatioFromCart(String username, Long reservationId);
 }
 

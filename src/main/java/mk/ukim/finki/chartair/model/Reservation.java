@@ -17,7 +17,7 @@ public class Reservation {
     @OneToMany(mappedBy = "reservation")
     private List<Passenger> passengers;
 
-    @OneToOne
+    @ManyToOne
     private Flight flight;
 
     private Integer numberOfBags;
