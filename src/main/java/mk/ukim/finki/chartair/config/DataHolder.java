@@ -26,7 +26,7 @@ public class DataHolder {
         this.flightService = flightService;
         this.reservationService = reservationService;
     }
-
+    /*
     @PostConstruct
     public void initData(){
         User user = userService.register("user", "user", "user",
@@ -42,5 +42,5 @@ public class DataHolder {
                 this.cityService.findCitiesByNameLike("City0").get(0),
                 this.cityService.findCitiesByNameLike("City1").get(0));
 
-    }
+    }*/
 }

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Flight {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long flightId;
 
     private LocalDateTime departure;

@@ -10,7 +10,7 @@ import java.util.List;
 public class City {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cityId;
 
     private String cityName;

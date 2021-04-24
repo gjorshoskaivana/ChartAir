@@ -10,7 +10,7 @@ import java.util.List;
 public class Country {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long countryId;
 
     private String countryName;
