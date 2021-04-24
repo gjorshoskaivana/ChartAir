@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col" style="background: lightgray; margin: 5px; height: 400px" >
+            <h3 style="background: dodgerblue; text-align: center; margin: 5px;">CHARTAIR ECONOMY</h3>
+            <ul>
+                <li>Free carry-on bag (40 x 30 x 20 cm) in the cabin, placed under the seat</li>
+                <li>Online check-in up to 2 days before departure</li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
+                <input style="display: none" id="ECONOMY" value="ECONOMY" name="travelClass">
+                <input type="number" style="display: none" value="0" name="noBags">
+            </form>
+        </div>
+        <div class="col" style="background: lightgray; margin: 5px;height: 400px">
+            <h3 style="background: dodgerblue; text-align: center; margin: 5px;">CHARTAIR BUSINESS</h3>
+            <ul>
+                <li>Free carry-on bag (40 x 30 x 20 cm) in the cabin, placed under the seat</li>
+                <li>Trolley Bag (55 x 40 x 23 cm) in the cabin</li>
+                <li>20 kg checked-in bag</li>
+                <li>Priority Boarding and check-in</li>
+                <li>Free airport and online check-in</li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
+                <input style="display: none" id="BUSINESS" value="BUSINESS" name="travelClass">
+                <input type="number" style="display: none" value="2" name="noBags">
+            </form>
+        </div>
+        <div class="col" style="background: lightgray; margin: 5px;height: 400px">
+            <h3 style="background: dodgerblue; text-align: center; margin: 5px;">CHARTAIR FIRST CLASS</h3>
+            <ul>
+                <li>Free carry-on bag (40 x 30 x 20 cm) in the cabin, placed under the seat</li>
+                <li>Trolley Bag (55 x 40 x 23 cm) in the cabin</li>
+                <li>32 kg checked-in bag</li>
+                <li>Priority Boarding and check-in</li>
+                <li>Free airport and online check-in</li>
+                <li>Refund to CHARTAIR Account</li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <br>
+            <form action="/shopping-cart" class="btn btn-block btn-success add-product-btn" style="align-content: center" method="post">
+                <input style="display: none" id="FIRST_CLASS" value="FIRST_CLASS" name="travelClass">
+                <input type="number" style="display: none" value="2" name="noBags">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
