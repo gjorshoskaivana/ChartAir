@@ -1,0 +1,31 @@
+<script>
+
+  function loadFlights(flights){
+    flights = []
+
+    return flight;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      initialDate: '2021-04-07',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      }, events: [
+        {
+          title: 'All Day Event',
+          start: '2021-04-01'
+        }]
+    });
+    calendar.render();
+  });
+</script>
+
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+  <div id='calendar'></div>
+</div>

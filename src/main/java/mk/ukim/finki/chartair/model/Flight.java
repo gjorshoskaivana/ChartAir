@@ -1,7 +1,6 @@
 package mk.ukim.finki.chartair.model;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 

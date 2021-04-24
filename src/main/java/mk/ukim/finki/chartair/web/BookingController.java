@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -39,7 +40,7 @@ public class BookingController {
     }
 
     @GetMapping("/{id}")
-    public String getArrivingFlights(Long id, Model model){
+    public String getArrivingFlights(@PathVariable Long id, Model model){
         model.addAttribute("cities", this.cityService.findAll());
         model.addAttribute("cities_ar", this.cityService.findAllByDepartureCity(id));
         model.addAttribute("bodyContent", "booking");

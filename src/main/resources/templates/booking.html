@@ -28,8 +28,7 @@
                                 <!--<option disabled selected th:value=0> -- select an option -- </option>-->
                                 <option th:each="city : ${cities}"
                                         th:value="${city.getCityId()}"
-                                        th:text="${city.getCityName()}">
-                                    <a th:href="@{'/booking/{id}' (id=${city.getCityId()})}"></a>
+                                        th:text="${city.getCityName()}" >
                                 </option>
                             </select>
                             <!--<input type="text" class="form-control search-slt" placeholder="Departure City">-->
