@@ -1,0 +1,72 @@
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="row pt-1 pb-1">
+
+        </div>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <form action="/flights/add" method="POST">
+                <input id="id" type="hidden" name="id" th:value="(${flight} != null ? ${flight.getFlightId()} : '')">
+                <div class="form-group">
+                    <label for="departure">Departure Time</label>
+                    <input type="datetime-local"
+                           class="form-control"
+                           id="departure"
+                           name="departure"
+                           th:value="(${flight} != null ? ${flight.getDeparture()} : '')"
+                           required
+                           placeholder="Enter departure time">
+                </div>
+                <div class="form-group">
+                    <label for="arrival">Arrival Time</label>
+                    <input type="datetime-local"
+                           class="form-control"
+                           id="arrival"
+                           name="arrival"
+                           th:value="(${flight} != null ? ${flight.getExpectedLanding()} : '')"
+                           placeholder="Arrival">
+                </div>
+                <div class="form-group">
+                    <label>Departure City</label>
+                    <select name="departureCity" class="form-control">
+                        <option th:if="${flight} != null"
+                                th:selected="${flight.getDepartureCity() != null &&
+                                flight.getDepartureCity().getCityId() == city.getCityId()}"
+                                th:each="city : ${cities}"
+                                th:value="${city.getCityId()}"
+                                th:text="${city.getCityName()}">
+                        </option>
+                        <option th:if="${flight} == null"
+                                th:each="city : ${cities}"
+                                th:value="${city.getCityId()}"
+                                th:text="${city.getCityName()}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Arrival City</label>
+                    <select name="arrivalCity" class="form-control">
+                        <option th:if="${flight} != null"
+                                th:selected="${flight.getArrivalCity() != null &&
+                                flight.getArrivalCity().getCityId() == city.getCityId()}"
+                                th:each="city : ${cities}"
+                                th:value="${city.getCityId()}"
+                                th:text="${city.getCityName()}">
+                        </option>
+                        <option th:if="${flight} == null"
+                                th:each="city : ${cities}"
+                                th:value="${city.getCityId()}"
+                                th:text="${city.getCityName()}">
+                        </option>
+                    </select>
+                </div>
+
+                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                <a type="button" class="btn btn-primary" href="/flights">Back</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,7 @@ package mk.ukim.finki.chartair.service.impl;
 
 import mk.ukim.finki.chartair.model.City;
 import mk.ukim.finki.chartair.model.Flight;
+import mk.ukim.finki.chartair.model.exceptions.FlightNotFoundException;
 import mk.ukim.finki.chartair.model.exceptions.InvalidArgumentsException;
 import mk.ukim.finki.chartair.repository.FlightRepository;
 import mk.ukim.finki.chartair.service.CityService;
@@ -53,5 +54,23 @@ public class FlightServiceImpl implements FlightService {
     public Optional<Flight> findById(Long id) {
         return this.flightRepository.findById(id);
     }
+
+    @Override
+    public Optional<Flight> edit(Long id, LocalDateTime departure, LocalDateTime arrival, City departureCity, City arrivalCity) {
+        Flight flight = this.flightRepository.findById(id).orElseThrow(() -> new FlightNotFoundException(id));
+        flight.setArrivalCity(arrivalCity);
+        flight.setDepartureCity(departureCity);
+        flight.setExpectedLanding(arrival);
+        flight.setDeparture(departure);
+
+        return Optional.of(this.flightRepository.save(flight));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        this.flightRepository.deleteById(id);
+    }
+
+
 
 }

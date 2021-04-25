@@ -1,6 +1,8 @@
 package mk.ukim.finki.chartair.model;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -12,8 +14,10 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long flightId;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
     private LocalDateTime departure;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
     private LocalDateTime expectedLanding;
 
     @ManyToOne

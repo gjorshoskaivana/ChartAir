@@ -1,0 +1,64 @@
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="row pt-1 pb-1">
+
+        </div>
+    </div>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12" th:if="${flights.size() > 0}">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Departure City</th>
+                            <th scope="col">Departure Time</th>
+                            <th scope="col">Arrival City</th>
+                            <th scope="col">Arrival Time</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="flight : ${flights}">
+                            <td th:text="${flight.getDepartureCity().getCityName()}"></td>
+                            <td th:text="${flight.getDeparture()}"></td>
+                            <td th:text="${flight.getArrivalCity().getCityName()}"></td>
+                            <td th:text="${flight.getExpectedLanding()}"></td>
+                            <td class="text-right">
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <form th:action="@{'/flights/delete/{id}' (id=${flight.getFlightId()})}"
+                                          th:method="DELETE">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash">Delete</i>
+                                        </button>
+                                    </form>
+                                </th:block>
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a th:href="@{'/flights/edit-form/{id}' (id=${flight.getFlightId()})}"
+                                       class="btn btn-sm btn-info">
+                                        <i class="fa fa-trash">Edit</i>
+                                    </a>
+                                </th:block>
+
+
+
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a href="/flights/add-form" class="btn btn-block btn-dark">
+                            Add new flight
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

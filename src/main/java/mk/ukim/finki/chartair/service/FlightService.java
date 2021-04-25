@@ -14,4 +14,6 @@ public interface FlightService {
     List<Flight> findAllByDepartureAndArrivalCity(Long departureId, Long arrivalId);
     Flight create(LocalDateTime departure, LocalDateTime arrival, City departureCity, City arrivalCity);
     Optional<Flight> findById(Long id);
+    Optional<Flight> edit(Long id, LocalDateTime departure, LocalDateTime arrival, City departureCity, City arrivalCity);
+    void deleteById(Long id);
 }
