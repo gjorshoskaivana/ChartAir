@@ -4,12 +4,15 @@ import mk.ukim.finki.chartair.model.City;
 import mk.ukim.finki.chartair.model.Flight;
 import mk.ukim.finki.chartair.service.CityService;
 import mk.ukim.finki.chartair.service.FlightService;
+import org.apache.tomcat.jni.Local;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -41,6 +44,7 @@ public class FlightController {
     }
 
     @GetMapping("/edit-form/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editFlightPage(@PathVariable Long id, Model model){
         if(this.flightService.findById(id).isPresent()){
             Flight flight = this.flightService.findById(id).get();
@@ -55,25 +59,28 @@ public class FlightController {
 
 
     @PostMapping("/add")
-    public String saveFlight(@RequestParam(required = false) Long id, @RequestParam LocalDateTime departure, @RequestParam LocalDateTime expectedLanding, @RequestParam Long departureCity, @RequestParam Long arrivalCity){
+    public String saveFlight(@RequestParam(required = false) Long id,
+                             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime departure,
+                             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime arrival,
+                             @RequestParam Long departureCity, @RequestParam Long arrivalCity){
         City departure_city = this.cityService.findCityById(departureCity);
-        City arrival = this.cityService.findCityById(arrivalCity);
+        City arrival_city = this.cityService.findCityById(arrivalCity);
+        //LocalDateTime departure1 = LocalDateTime.parse(departure);
+        //LocalDateTime expectedLanding1 = LocalDateTime.parse(expectedLanding);
         if(id != null){
-            this.flightService.edit(id, departure, expectedLanding, departure_city, arrival);
+            this.flightService.edit(id, departure, arrival, departure_city, arrival_city);
         }
         else{
-            this.flightService.create(departure, expectedLanding, departure_city, arrival);
+            this.flightService.create(departure, arrival, departure_city, arrival_city);
         }
         return "redirect:/flights";
     }
     @GetMapping("/add-form")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addFlightPage(Model model) {
-
         List<City> cities = this.cityService.findAll();
         model.addAttribute("bodyContent", "add-flight");
         model.addAttribute("cities", cities);
-
         return "master-template";
     }
 }

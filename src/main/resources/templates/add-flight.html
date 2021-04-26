@@ -13,6 +13,7 @@
                 <div class="form-group">
                     <label for="departure">Departure Time</label>
                     <input type="datetime-local"
+                           format-value="yyyy-MM-ddTHH:mm"
                            class="form-control"
                            id="departure"
                            name="departure"
@@ -24,6 +25,7 @@
                     <label for="arrival">Arrival Time</label>
                     <input type="datetime-local"
                            class="form-control"
+                           format-value="yyyy-MM-ddTHH:mm"
                            id="arrival"
                            name="arrival"
                            th:value="(${flight} != null ? ${flight.getExpectedLanding()} : '')"

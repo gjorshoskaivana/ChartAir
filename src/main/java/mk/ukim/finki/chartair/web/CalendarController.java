@@ -2,7 +2,6 @@ package mk.ukim.finki.chartair.web;
 
 import mk.ukim.finki.chartair.model.Flight;
 import mk.ukim.finki.chartair.service.FlightService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
