@@ -50,6 +50,12 @@ public class CityServiceImpl implements CityService {
         return city;
     }
 
+    @Override
+    public City findCityByName(String departure) {
+        City city = this.cityRepository.findByCityName(departure);
+        return city;
+    }
+
 
 
 }

@@ -71,6 +71,12 @@ public class FlightServiceImpl implements FlightService {
         this.flightRepository.deleteById(id);
     }
 
+    @Override
+    public List<Flight> findAllByDepartureCity(String departure) {
+        City city = this.cityService.findCityByName(departure);
+        return this.flightRepository.findAllByDepartureCity(city);
+    }
+
 
 
 }

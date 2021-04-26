@@ -16,4 +16,5 @@ public interface FlightService {
     Optional<Flight> findById(Long id);
     Optional<Flight> edit(Long id, LocalDateTime departure, LocalDateTime arrival, City departureCity, City arrivalCity);
     void deleteById(Long id);
+    List<Flight> findAllByDepartureCity(String departure);
 }

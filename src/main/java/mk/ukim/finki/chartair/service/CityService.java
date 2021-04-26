@@ -12,5 +12,6 @@ public interface CityService {
     List<City> findCitiesByNameLike(String name);
     City create(String cityName, Country country);
     City findCityById(Long id);
+    City findCityByName(String departure);
 
 }

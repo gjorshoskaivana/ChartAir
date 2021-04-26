@@ -4,4 +4,19 @@
             <iframe src="https://www.google.com/maps/d/embed?mid=1vcCr5MHjhOEbHWj9Sflz89o_pMy3wq_1" width="750" height="580"></iframe>
         </div>
     </section>
+    <div>
+        <form th:action="@{'/map/searchFlight'}" th:method="GET">
+            <input type="text" id="nameSearch" name="nameSearch"><button type="submit" style="backgroundcolor: blue">Search</button>
+        </form>
+    </div>
+    <div>
+        <br>
+        <br>
+        <h2>
+            Air Relations:
+        </h2>
+        <br>
+        <h4 th:each="f : ${listFlights}" th:text="${f.departureCity.cityName} + ' - ' + ${f.arrivalCity.cityName}">
+        </h4>
+    </div>
 </div>
